@@ -1,4 +1,5 @@
 import Sequelize, { Model } from 'sequelize';
+import uuid from 'uuid/v4';
 
 class User extends Model {
   static init(sequelize) {
@@ -13,6 +14,9 @@ class User extends Model {
         sequelize,
       }
     );
+    this.addHook('beforeSave', async user => {
+      user.id = uuid();
+    });
   }
 }
 
