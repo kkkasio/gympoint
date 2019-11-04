@@ -1,6 +1,6 @@
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('users', {
+    return queryInterface.createTable('students', {
       id: {
         type: Sequelize.UUID,
         defaultValue: Sequelize.UUIDV4,
@@ -12,23 +12,23 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
-
       email: {
         type: Sequelize.STRING,
         allowNull: false,
         unique: true,
       },
-
-      password_hash: {
+      birthday: {
+        type: Sequelize.DATE,
+        allowNull: false,
+      },
+      weight: {
+        type: Sequelize.FLOAT,
+        allowNull: false,
+      },
+      height: {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      is_admin: {
-        type: Sequelize.BOOLEAN,
-        defaultValue: false,
-        allowNull: false,
-      },
-
       created_at: {
         type: Sequelize.DATE,
         allowNull: false,
@@ -41,7 +41,7 @@ module.exports = {
     });
   },
 
-  /*  down: queryInterface => {
-     return queryInterface.dropTable('users');
-  }, */
+  down: queryInterface => {
+    return queryInterface.dropTable('students');
+  },
 };
