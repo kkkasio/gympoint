@@ -1,5 +1,6 @@
 import Sequelize, { Model } from 'sequelize';
 import uuid from 'uuid/v4';
+import differenceInYears from 'date-fns/differenceInYears';
 
 class Student extends Model {
   static init(sequelize) {
@@ -8,7 +9,13 @@ class Student extends Model {
         name: Sequelize.STRING,
         email: Sequelize.STRING,
         birthday: Sequelize.DATE,
-        weight: Sequelize.FLOAT,
+        age: {
+          type: Sequelize.VIRTUAL,
+          get() {
+            return differenceInYears(new Date(), this.birthday);
+          },
+        },
+        weight: Sequelize.STRING,
         height: Sequelize.STRING,
       },
       {
