@@ -1,28 +1,11 @@
-# Adonis API application
+# ADONIS JS
 
-This is the boilerplate for creating an API server in AdonisJs, it comes pre-configured with.
+A aplicação é um projeto de app gerenciador de academia, o **Gympoint**.
 
-1. Bodyparser
-2. Authentication
-3. CORS
-4. Lucid ORM
-5. Migrations and seeds
+# 1. Autenticação
+- Os Administradores podem se autenticar na aplicação utilizando e-mail e senha.
 
-## Setup
-
-Use the adonis command to install the blueprint
-
-```bash
-adonis new yardstick --api-only
-```
-
-or manually clone the repo and then run `npm install`.
-
-
-### Migrations
-
-Run the following command to run startup migrations.
-
-```js
-adonis migration:run
-```
+# 2 Cadastro de alunos
+- Alunos são mantidos (cadastrados/atualizados) na aplicação utilizando nome, email, idade, peso e altura.
+- O cadastro de alunos só pode ser feito por administradores autenticados na aplicação.
+- O aluno não pode se autenticar no sistema, ou seja, não possui senha.
