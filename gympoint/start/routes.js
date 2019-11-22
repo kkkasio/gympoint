@@ -21,3 +21,5 @@ Route.get('/', () => {
 });
 
 Route.post('users', 'UserController.store').validator('User');
+
+Route.resource('students', 'StudentController').validator('Student');

@@ -52,18 +52,10 @@ class StudentController {
    * @param {Response} ctx.response
    * @param {View} ctx.view
    */
-  async show({ params, request, response, view }) {}
-
-  /**
-   * Render a form to update an existing student.
-   * GET students/:id/edit
-   *
-   * @param {object} ctx
-   * @param {Request} ctx.request
-   * @param {Response} ctx.response
-   * @param {View} ctx.view
-   */
-  async edit({ params, request, response, view }) {}
+  async show({ params: { id }, request, response, view }) {
+    const student = await Student.findOrFail(id);
+    return student;
+  }
 
   /**
    * Update student details.

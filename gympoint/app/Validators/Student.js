@@ -10,7 +10,7 @@ class Student {
   get rules() {
     return {
       name: 'required',
-      email: 'required|email|unique:students',
+      email: 'required|email|unique:students,email',
       birthday: 'required|date',
       weight: 'required|float',
       height: 'required|integer'
