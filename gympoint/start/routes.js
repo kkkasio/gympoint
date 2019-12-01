@@ -22,4 +22,11 @@ Route.get('/', () => {
 
 Route.post('users', 'UserController.store').validator('User');
 
-Route.resource('students', 'StudentController').validator('Student');
+Route.group(() => {
+  Route.resource('permission', 'PermissionController').apiOnly();
+  Route.resource('roles', 'RoleController').apiOnly();
+
+  Route.resource('students', 'StudentController')
+    .apiOnly()
+    .validator('Student');
+}).middleware(['auth', 'is:administrator']);
