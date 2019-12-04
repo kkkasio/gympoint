@@ -21,6 +21,7 @@ Route.get('/', () => {
 });
 
 Route.post('users', 'UserController.store').validator('User');
+Route.post('sessions', 'SessionController.store');
 
 Route.group(() => {
   Route.resource('permission', 'PermissionController').apiOnly();
@@ -29,4 +30,8 @@ Route.group(() => {
   Route.resource('students', 'StudentController')
     .apiOnly()
     .validator('Student');
-}).middleware(['auth', 'is:administrator']);
+
+  Route.resource('inscriptions', 'InscriptionController').apiOnly();
+
+  Route.resource('plans', 'PlanController').apiOnly();
+}).middleware('auth' /* ['', 'is:administrator'] */);
