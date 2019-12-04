@@ -35,3 +35,5 @@ Route.group(() => {
 
   Route.resource('plans', 'PlanController').apiOnly();
 }).middleware('auth' /* ['', 'is:administrator'] */);
+
+Route.post('checkin', 'CheckinController.store');
