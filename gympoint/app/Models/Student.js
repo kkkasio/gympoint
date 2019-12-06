@@ -12,6 +12,10 @@ class Student extends Model {
   getAge() {
     return differenceInYears(new Date(), this.birthday);
   }
+
+  checkins() {
+    return this.hasMany('App/Models/Checkin');
+  }
 }
 
 module.exports = Student;
