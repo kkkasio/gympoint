@@ -16,6 +16,10 @@ class Student extends Model {
   checkins() {
     return this.hasMany('App/Models/Checkin');
   }
+
+  inscription() {
+    return this.hasOne('App/Models/Inscription');
+  }
 }
 
 module.exports = Student;

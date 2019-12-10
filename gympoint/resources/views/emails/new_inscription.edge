@@ -1,7 +1,62 @@
-<strong>Olá ({{ student.name }}). Sua matricula foi confirmada! </strong>
+<style>
+  @import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
+    * {
+        padding:0;
+        margin: 0;
+    }
+    .body {
+    font-family: 'Open Sans', sans-serif;
+    background:#F2F4F8;
+    margin: 0 auto;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    }
+    .header{
+      padding-top: 50px;
+      margin: 0 0 25px 0;
+    }
+    .container{
+      background: #fff;
+      margin:0 auto;
+      padding:100px 150px;
+      border-radius: 6px;
+      max-width: 600px;
+      box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.1);
+    }
+    .plan{
+      margin-top: 30px;
+    }
+    .plan h4{
+      margin:10px 0;
+    }
+    span{
+      color:#EE4D64;
+    }
+    .footer{
+      margin:20px;
+      
+    }
+    .footer small{
+      font-size: 16px;
+    }    
+</style>
+    <div class="body">
+      <div class="header">
+        <img src="https://raw.githubusercontent.com/Rocketseat/bootcamp-gostack-desafio-03/master/.github/logo.png" title="GYM POINT">
+      </div>
+      <div class="container">
+        <h1>Olá <span>{{ student.name }}</span> </h1> Sua matricula foi confirmada! 🥇
+        <div class="plan">
+          <h4>Começo: <span>{{ inscription.start_date }}</span></h4>
+          <h4>Término: <span>{{ inscription.end_date }}</span></h4>      
+          <h4>Preço: <span>R$ {{ inscription.price }}</span></h4>
+        </div>
+      </div>
+        
+      <div class="footer">
+          <small>Atensiosamente equipe <span>GYMPOINT</span></small>
+      </div>
+    </div>
 
-Começo: ({{ inscription.start_date }})
-Término: ({{ inscription.end_date }})
-Preço: ({{ inscription.price }})
-
-<small>Atensiosamente equipe Gymapp</small>
+    

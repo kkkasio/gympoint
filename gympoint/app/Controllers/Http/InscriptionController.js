@@ -1,10 +1,9 @@
 'use strict';
 
-// import { ptBR } from 'date-fns/locale';
+const Kue = use('Kue');
+const Job = use('App/Jobs/NewInscriptionMail');
 
 const { addMonths, parseISO } = require('date-fns');
-
-const Mail = use('Mail');
 
 /** @type {typeof import('@adonisjs/lucid/src/Lucid/Model')} */
 const Inscription = use('App/Models/Inscription');
@@ -40,16 +39,7 @@ class InscriptionController {
       price: plan.price
     });
 
-    await Mail.send(
-      ['emails.new_inscription'],
-      { student, inscription },
-      message => {
-        message
-          .to(student.email)
-          .from('kasio@kasio.me', 'Equipe | Gymapp')
-          .subject('Sua Matricula');
-      }
-    );
+    Kue.dispatch(Job.key, { student, inscription }, { attempts: 3 });
 
     return inscription;
   }

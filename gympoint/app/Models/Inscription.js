@@ -14,6 +14,10 @@ class Inscription extends Model {
     }
     return value;
   }
+
+  student() {
+    return this.belongsTo('App/Models/Student');
+  }
 }
 
 module.exports = Inscription;
