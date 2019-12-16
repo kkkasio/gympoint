@@ -3,27 +3,35 @@
 /** @type {typeof import('@adonisjs/lucid/src/Lucid/Model')} */
 const Model = use('Model');
 
-const { getUnixTime, parseISO, format, toDate } = require('date-fns');
+const { formatDistanceToNow, parseISO } = require('date-fns');
 const { ptBR } = require('date-fns/locale');
 
 class Inscription extends Model {
+  static boot() {
+    super.boot();
+
+    this.addTrait('@provider:Timezone/Trait');
+  }
+
   static get dates() {
     return super.dates.concat(['start_date', 'end_date']);
   }
 
-  static castDates(field, value) {
+  /* static castDates(field, value) {
     if (field === 'start_date' || field === 'end_date') {
-      return value.format('DD-MM-YYYY');
+      return value;
     }
     return value;
-  }
+  } */
 
   static get computed() {
     return ['endDateFormated'];
   }
 
   getEndDateFormated({ end_date }) {
-    // return formatDistance(new Date(), parseISO(end_date), { locale: ptBR });
+    return formatDistanceToNow(parseISO(end_date), {
+      locale: ptBR
+    });
   }
 
   student() {
