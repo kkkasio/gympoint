@@ -53,7 +53,13 @@ class CheckinController {
     return checkin;
   }
 
-  async show({ params, request, response }) {}
+  async show({ params: { studentId }, request, response }) {
+    const checkins = await Checkin.query()
+      .where('student_id', studentId)
+      .orderBy('created_at', 'desc')
+      .fetch();
+    return checkins;
+  }
 
   async update({ params, request, response }) {}
 

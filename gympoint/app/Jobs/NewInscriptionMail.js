@@ -12,7 +12,7 @@ class NewInscriptionMail {
   }
 
   async handle({ student, inscription }) {
-    console.log(`Job: ${NewInscriptionMail.key}`);
+    console.log(`Job: ${inscription.end_date}`);
 
     await Mail.send(
       ['emails.new_inscription'],

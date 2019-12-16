@@ -3,6 +3,9 @@
 /** @type {typeof import('@adonisjs/lucid/src/Lucid/Model')} */
 const Model = use('Model');
 
+const { getUnixTime, parseISO, format, toDate } = require('date-fns');
+const { ptBR } = require('date-fns/locale');
+
 class Inscription extends Model {
   static get dates() {
     return super.dates.concat(['start_date', 'end_date']);
@@ -15,8 +18,20 @@ class Inscription extends Model {
     return value;
   }
 
+  static get computed() {
+    return ['endDateFormated'];
+  }
+
+  getEndDateFormated({ end_date }) {
+    // return formatDistance(new Date(), parseISO(end_date), { locale: ptBR });
+  }
+
   student() {
     return this.belongsTo('App/Models/Student');
+  }
+
+  plan() {
+    return this.hasOne('App/Models/Plan');
   }
 }
 

@@ -16,7 +16,7 @@ const Factory = use('Factory');
 class DatabaseSeeder {
   async run() {
     const user = await Factory.model('App/Models/User').create();
-    console.log(user);
+    return user;
   }
 }
 

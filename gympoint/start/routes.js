@@ -36,4 +36,5 @@ Route.group(() => {
   Route.resource('plans', 'PlanController').apiOnly();
 }).middleware('auth' /* ['', 'is:administrator'] */);
 
-Route.post('checkin', 'CheckinController.store');
+Route.post('checkins', 'CheckinController.store');
+Route.get('students/:studentId/checkins', 'CheckinController.show');

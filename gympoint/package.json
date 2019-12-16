@@ -29,9 +29,11 @@
     "@adonisjs/mail": "^3.0.10",
     "@adonisjs/redis": "^2.0.7",
     "@adonisjs/validator": "^5.0.6",
+    "@rocketseat/adonis-bull": "^0.1.2",
     "adonis-acl": "^1.1.1",
     "adonis-kue": "^5.0.1",
     "date-fns": "^2.8.1",
+    "date-fns-timezone": "^0.1.4",
     "pg": "^7.12.1"
   },
   "devDependencies": {

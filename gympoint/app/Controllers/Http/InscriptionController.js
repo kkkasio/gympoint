@@ -43,6 +43,11 @@ class InscriptionController {
 
     return inscription;
   }
+
+  async show({ params }) {
+    const inscription = await Inscription.findOrFail(params.id);
+    return inscription;
+  }
 }
 
 module.exports = InscriptionController;
