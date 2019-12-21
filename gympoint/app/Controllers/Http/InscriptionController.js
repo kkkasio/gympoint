@@ -34,7 +34,7 @@ class InscriptionController {
 
     if (hasInscription && isAfter(hasInscription.end_date, new Date()))
       return response
-        .status(401)
+        .status(400)
         .send({ message: 'This student already has an active inscription' });
 
     const plan = await Plan.findOrFail(plan_id);

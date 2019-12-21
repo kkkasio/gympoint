@@ -1,6 +1,6 @@
 'use strict';
 
-const { subDays, isToday } = require('date-fns');
+const { subDays, isToday, isBefore } = require('date-fns');
 /** @typedef {import('@adonisjs/framework/src/Request')} Request */
 /** @typedef {import('@adonisjs/framework/src/Response')} Response */
 /** @typedef {import('@adonisjs/framework/src/View')} View */
@@ -21,6 +21,16 @@ class CheckinController {
   async store({ request, response }) {
     const { student_id } = request.only(['student_id']);
 
+    const [hasInscription] = await Database.table('inscriptions')
+      .where('student_id', student_id)
+      .orderBy('created_at', 'desc')
+      .limit(1);
+
+    if (!hasInscription || !isBefore(new Date(), hasInscription.end_date))
+      return response
+        .status(401)
+        .send({ message: "You don't have an active inscription" });
+
     const student = await Student.findOrFail(student_id);
 
     const [data] = await Database.table('checkins')
@@ -28,7 +38,7 @@ class CheckinController {
       .orderBy('created_at', 'desc')
       .limit(1);
 
-    if (isToday(data.created_at)) {
+    if (data && isToday(data.created_at)) {
       return response
         .status(401)
         .send({ message: 'You already checked in today' });
