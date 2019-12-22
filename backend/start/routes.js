@@ -26,15 +26,17 @@ Route.post('sessions', 'SessionController.store');
 Route.group(() => {
   Route.resource('permission', 'PermissionController').apiOnly();
   Route.resource('roles', 'RoleController').apiOnly();
-
   Route.resource('students', 'StudentController')
     .apiOnly()
     .validator('Student');
-
   Route.resource('inscriptions', 'InscriptionController').apiOnly();
-
   Route.resource('plans', 'PlanController').apiOnly();
+
+  Route.get('help-orders', 'Admin/HelpOrderController.index');
+  Route.post('help-orders/:id', 'Admin/HelpOrderController.update');
 }).middleware('auth' /* ['', 'is:administrator'] */);
 
 Route.post('checkins', 'CheckinController.store');
 Route.get('students/:studentId/checkins', 'CheckinController.show');
+Route.post('students/:studentId/help-orders', 'HelpOrderController.store');
+Route.get('students/:studentId/help-orders', 'HelpOrderController.show');

@@ -3,7 +3,7 @@
 /** @type {typeof import('@adonisjs/lucid/src/Lucid/Model')} */
 const Model = use('Model');
 
-const { formatDistanceToNow, parseISO } = require('date-fns');
+const { formatDistanceToNow, parseISO, isAfter } = require('date-fns');
 const { ptBR } = require('date-fns/locale');
 
 class Inscription extends Model {
@@ -25,7 +25,11 @@ class Inscription extends Model {
   } */
 
   static get computed() {
-    return ['endDateFormated'];
+    return ['endDateFormated', 'active'];
+  }
+
+  getActive({ end_date }) {
+    return isAfter(parseISO(end_date), new Date());
   }
 
   getEndDateFormated({ end_date }) {

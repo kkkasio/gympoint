@@ -13,12 +13,16 @@ class Student extends Model {
     return differenceInYears(new Date(), this.birthday);
   }
 
+  inscription() {
+    return this.hasOne('App/Models/Inscription');
+  }
+
   checkins() {
     return this.hasMany('App/Models/Checkin');
   }
 
-  inscription() {
-    return this.hasOne('App/Models/Inscription');
+  questions() {
+    return this.hasMany('App/Moldes/HelpOrder');
   }
 }
 
