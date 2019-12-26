@@ -2,11 +2,11 @@
 
 A aplicação é um projeto de app gerenciador de academia, o **Gympoint**.
 
-# 1. Autenticação [x]
+# 1. Autenticação :heavy_check_mark:
 
 - Os Administradores podem se autenticar na aplicação utilizando e-mail e senha.
 
-# 2 Cadastro de alunos [x]
+# 2 Cadastro de alunos :heavy_check_mark:
 
 - Alunos são mantidos (cadastrados/atualizados) na aplicação utilizando nome, email, idade, peso e altura.
 - O cadastro de alunos só pode ser feito por administradores autenticados na aplicação.
@@ -14,7 +14,7 @@ A aplicação é um projeto de app gerenciador de academia, o **Gympoint**.
 
 ### Funcionalidades do administrador
 
-#### 1. Gestão de planos [x]
+#### 1. Gestão de planos :heavy_check_mark:
 
 O Administrador pode cadastrar planos para matrícula de alunos, o plano deve possuir os seguintes campos:
 
@@ -24,7 +24,7 @@ O Administrador pode cadastrar planos para matrícula de alunos, o plano deve po
 - created_at;
 - updated_at;
 
-[x] #### 2. Gestão de matrículas
+#### 2. Gestão de matrículas :heavy_check_mark:
 
 Apesar do aluno estar cadastrado na plataforma, isso não significa que o mesmo tem uma matrícula ativa e que pode acessar a academia.
 Nessa funcionalidade temos um cadastro de matrículas por aluno, a matrícula possui os campos:
@@ -45,7 +45,7 @@ Quando um aluno **realiza uma matrícula** ele recebe um e-mail com detalhes da 
 
 ### Funcionalidades do aluno
 
-#### 1. Checkins [x]
+#### 1. Checkins :heavy_check_mark:
 
 Quando o aluno chega na academia o mesmo realiza um check-in apenas informando seu ID de cadastro (ID do banco de dados);
 
@@ -59,7 +59,7 @@ A tabela de `checkins` possui os campos:
 
 O usuário só pode fazer **5 checkins** dentro de um período de 7 dias corridos.
 
-#### 2. Pedidos de auxílio []
+#### 2. Pedidos de auxílio
 
 O aluno pode criar pedidos de auxílio para a academia em relação a algum exercício, alimentação ou instrução qualquer;
 
